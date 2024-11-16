@@ -12,9 +12,9 @@ class Enseignant
     }
 
 
-    public function add($ID, $nom, $prenom, $sexe, $email, $ddn)
+    public function add($ID, $nom, $prenom, $sexe, $email, $adresse)
     {
-        $requete = 'insert into enseignant (ID, nom, prenom, sexe, email, ddn) values (:mat, :nm, :pr, :sx, :tl, :dn)';
+        $requete = 'insert into enseignant (ID, nom, prenom, sexe, email, adresse) values (:ID, :nm, :pr, :sx, :em, :add)';
         $stat = $this->connexion->prepare($requete);
         $rs = $stat->execute([
             'ID' => $ID,
@@ -22,24 +22,24 @@ class Enseignant
             'pr' => $prenom,
             'sx' => $sexe,
             'em' => $email,
-            'dn' => $ddn
+            'add' => $adresse
         ]);
 
 
 
     }
 
-    public function edit($ID, $nom, $prenom, $sexe, $email, $ddn)
+    public function edit($ID, $nom, $prenom, $sexe, $email, $adresse)
     {
 
-        $requete='update enseignant set nom=:nm, prenom=:pr, sexe=:sx, email=:em, ddn=:d where ID=:ID';
+        $requete='update enseignant set nom=:nm, prenom=:pr, sexe=:sx, email=:em, adresse=:d where ID=:ID';
         $stmt=$this->connexion->prepare($requete);
         $result=$stmt->execute([
             'nm'=> $nom,
             'pr'=> $prenom,
             'sx'=> $sexe,
             'em'=> $email,
-            'd'=> $ddn,
+            'd'=> $adresse,
             'ID'=> $ID
         ]);
 
@@ -59,7 +59,7 @@ class Enseignant
 
     public function getAll()
     {
-        $requete = 'select * from enseinant order by ID desc';
+        $requete = 'select * from enseignant order by ID desc';
         $st = $this->connexion->query($requete);
         $enseignants = $st->fetchAll(PDO::FETCH_ASSOC);
         return $enseignants;

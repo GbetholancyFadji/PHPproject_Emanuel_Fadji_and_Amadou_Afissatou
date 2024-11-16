@@ -1,11 +1,11 @@
 <?php
-require_once('index.php');
+//require_once('index.php');
 
 class Provider {
     // Informations de connexion à la base de données
     private $host = 'localhost'; // L'hôte de la base de données MySQL (localhost dans un environnement local)
     private $dbName = "scolarite"; // Le nom de la base de données
-    private $user = "mysql"; // Nom d'utilisateur MySQL
+    private $user = "root"; // Nom d'utilisateur MySQL
     private $password = ""; // Mot de passe de l'utilisateur MySQL (mettre votre mot de passe ici)
 
     // Méthode pour établir la connexion
@@ -21,7 +21,7 @@ class Provider {
             $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
             // Si la connexion réussit
-            echo 'Connexion réussie à la base de données !';
+            //echo 'Connexion réussie à la base de données !';
 
             return $con;
         } catch (PDOException $e) {

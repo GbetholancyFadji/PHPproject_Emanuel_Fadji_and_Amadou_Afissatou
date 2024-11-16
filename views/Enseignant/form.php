@@ -41,7 +41,7 @@
         </tr>
         <tr>
             <td>ADDRESSE</td>
-            <td><input type="text" name="ddn" required></td>
+            <td><input type="text" name="adresse" required></td>
         </tr>
         <tr>
             <input type="hidden" name="action" value="ajout">

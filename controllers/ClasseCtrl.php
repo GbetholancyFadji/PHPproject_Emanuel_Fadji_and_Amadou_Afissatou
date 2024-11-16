@@ -47,6 +47,28 @@ if ($action == 'ajout') {
     $etService->add($id, $numero, $libelle, $nbreE);
 
     //3. appel de la vue
-    Header('Location:../views/classes/liste.php?message=Classroom added');
+    Header('Location:../views/Classes/liste.php?message=Classroom added');
+}
+
+if($action=='editForm'){
+    $id=$_GET['id'];
+    Header('Location:../views/Classes/edit.php?id='.$id);
+}
+
+
+
+if ($action == 'modifier') {
+    //1. recupertaion de donnees
+    $id = $_POST['id'];
+    $numero = $_POST['numero'];
+    $libelle = $_POST['libelle'];
+    $nbreE = $_POST['nbreE'];
+   
+
+    //2. Appel du model
+    $etService->edit($id, $numero, $libelle, $nbreE);
+
+    //3. appel de la vue
+    Header('Location:../views/Classes/liste.php?message=Salle modifiée');
 }
 

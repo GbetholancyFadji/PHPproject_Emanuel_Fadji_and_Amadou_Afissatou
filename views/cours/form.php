@@ -31,7 +31,7 @@
         </select><br>
 
         <label for="etudiants">Etudiants</label><br>
-        <?php foreach ($etudiants as $etudiant) : ?>
+        <?php foreach ($etudiantService as $etudiant) : ?>
             <input type="checkbox" name="etudiants[]" value="<?php echo $etudiant['id']; ?>">
             <?php echo $etudiant['nom'] . ' ' . $etudiant['prenom']; ?><br>
         <?php endforeach; ?><br>

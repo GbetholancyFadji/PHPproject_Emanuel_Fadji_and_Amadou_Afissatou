@@ -5,8 +5,8 @@
     <title>Document</title>
 </head>
 <body>
-<h1>Liste des classes</h1>
-<a href="../../controllers/ClasseCtrl.php?action=form" >Go to classrooms form</a> <br >
+<h1>Liste des salles</h1>
+<a href="../../controllers/ClasseCtrl.php?action=form" >Go to classroom form</a> <br >
 <?php 
         if(isset($_GET['message'])){
             ?>
@@ -23,7 +23,7 @@ $classes=$etService->getAll();
 
 <table border="1" align="center">
     <tr>
-    <th>IDENTIFIANT</th><th>NUMERO</th><th>LIBELLE</th><th>NOMBRE D'ETUDIANTS</th>
+    <th>IDENTIFIANT</th><th>NUMERO</th><th>LIBELLE</th><th>NOMBRE D'ETUDIANTS</th><th>ACTIONS</th>
     </tr>
     <?php
 foreach($classes as $et){
@@ -33,7 +33,7 @@ foreach($classes as $et){
     <td><?php echo $et['numero']; ?></td>
     <td><?php echo $et['libelle']; ?></td>
     <td><?php echo $et['nbreE']; ?></td>
-    <td><a href="../../controllersClasseCtrl.php?action=editForm&id=<?php echo $et['id']; ?>" >MODIFIER LES INFORMATIONS DE LA SALLE</a>--<a href="../../controllers/ClasseCtrl.php?action=delete&id=<?php echo $et['id']; ?>"   onClick="return window.confirm('Etes-vous sûre de vouloir changer de classe')">SUPPRIMER</a></td>
+    <td><a href="../../controllers/ClasseCtrl.php?action=editForm&id=<?php echo $et['id']; ?>" >MODIFIER</a>--<a href="../../controllers/ClasseCtrl.php?action=delete&id=<?php echo $et['id']; ?>"   onClick="return window.confirm('Etes-vous sûre de vouloir changer cette salle')">SUPPRIMER</a></td>
     </tr>
 <?php } ?>
    

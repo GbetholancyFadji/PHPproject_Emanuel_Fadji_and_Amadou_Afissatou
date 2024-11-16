@@ -41,12 +41,13 @@ if ($action == 'ajout') {
     $nom = $_POST['nom'];
     $prenom = $_POST['prenom'];
     $sexe = $_POST['sexe'];
-    $ddn = $_POST['date_de_naissance'];
-    $tel = $_POST['telephone'];
+    $telephone = $_POST['telephone'];
+    $date_de_naissance = $_POST['date_de_naissance'];
+    
 
 
     //2. Appel du model
-    $etService->add($matricule, $nom, $prenom, $sexe, $tel, $ddn);
+    $etService->add($matricule, $nom, $prenom, $sexe, $telephone, $date_de_naissance);
 
     //3. appel de la vue
     Header('Location:../views/Etudiant/liste.php?message=Etudiant ajouté');
@@ -67,12 +68,13 @@ if ($action == 'modifier') {
     $nom = $_POST['nom'];
     $prenom = $_POST['prenom'];
     $sexe = $_POST['sexe'];
-    $ddn = $_POST['ddn'];
-    $tel = $_POST['tel'];
+    $telephone = $_POST['telephone'];
+    $date_de_naissance = $_POST['date_de_naissance'];
+    
 
 
     //2. Appel du model
-    $etService->edit($matricule, $nom, $prenom, $sexe, $tel, $ddn);
+    $etService->edit($matricule, $nom, $prenom, $sexe, $telephone, $date_de_naissance);
 
     //3. appel de la vue
     Header('Location:../views/Etudiant/liste.php?message=Etudiant modifié');

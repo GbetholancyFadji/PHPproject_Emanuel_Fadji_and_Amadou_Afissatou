@@ -34,7 +34,7 @@ foreach($enseignants as $et){
     <td><?php echo $et['prenom']; ?></td>
     <td><?php echo $et['sexe']; ?></td>
     <td><?php echo $et['email']; ?></td>
-    <td><?php echo $et['ddn']; ?></td>
+    <td><?php echo $et['adresse']; ?></td>
     <td><a href="../../controllers/EnseignantController.php?action=editForm&ID=<?php echo $et['ID']; ?>" >MODIFIER</a>--<a href="../../controllers/EnseignantController.php?action=delete&ID=<?php echo $et['ID']; ?>"   onClick="return window.confirm('Etes-vous sûre de vouloir supprimer cet enseignant')">SUPPRIMER</a></td>
     </tr>
 <?php } ?>

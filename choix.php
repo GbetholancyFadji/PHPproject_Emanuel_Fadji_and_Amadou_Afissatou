@@ -103,7 +103,7 @@ $username = $_SESSION['username'];
     <div class="menu">
         <a href="views/Etudiant/form.php">Gérer les étudiants</a>
         <a href="views/Enseignant/form.php">Gérer les enseignants</a>
-        <a href="views/Classe/form.php">Gérer les classes</a>
+        <a href="views/Classes/form.php">Gérer les classes</a>
         <a href="views/Cours/form.php">Gérer les cours</a>
     </div>
 </div>

@@ -1,64 +1,52 @@
-<?php
-// liste.php
-
-session_start(); // Démarrer la session
-
-// Vérifier si l'utilisateur est connecté
-if (!isset($_SESSION['username'])) {
-    header("Location: ../index.php");
-    exit();
-}
-
-// Inclure le fichier de service pour récupérer les étudiants
-require_once '../../models/EtudiantService.php';
-
-// Initialisation du service d'étudiants
-$etudiantService = new EtudiantService();
-
-// Récupérer tous les étudiants
-$etudiants = $etudiantService->getAllEtudiants();
-?>
-
-<!DOCTYPE html>
-<html lang="fr">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Liste des étudiants</title>
-    <link rel="stylesheet" href="../../assets/styles.css">
+    <title>Document</title>
 </head>
 <body>
+<h1>Liste des étudiants</h1>
+<a href="../../controllers/EtudiantCtrl.php?action=form" >Go to students form</a> <br >
+<?php 
+        if(isset($_GET['message'])){
+            ?>
+              <span style="color: green; font-size: large"><?php echo $_GET['message']; ?></span>
+        <?php }
+    ?>
 
-<div class="container">
-    <h2>Liste des étudiants</h2>
+<?php
+require_once('../../models/EtudiantService.php');
+$etService=new EtudiantService();
+$etudiants=$etService->getAll();
+?>    
 
-    <table>
-        <thead>
-            <tr>
-                <th>Matricule</th>
-                <th>Nom</th>
-                <th>Prénom</th>
-                <th>Sexe</th>
-                <th>Téléphone</th>
-                <th>Date de naissance</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($etudiants as $etudiant): ?>
-            <tr>
-                <td><?php echo htmlspecialchars($etudiant['matricule']); ?></td>
-                <td><?php echo htmlspecialchars($etudiant['nom']); ?></td>
-                <td><?php echo htmlspecialchars($etudiant['prenom']); ?></td>
-                <td><?php echo htmlspecialchars($etudiant['sexe']); ?></td>
-                <td><?php echo htmlspecialchars($etudiant['telephone']); ?></td>
-                <td><?php echo htmlspecialchars($etudiant['ddn']); ?></td>
-            </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
 
-    <a href="form.php">Ajouter un étudiant</a>
-</div>
+<table border="1" align="center">
+    <tr>
+    <th>MATRICULE</th><th>NOM</th><th>PRENOM</th><th>SEXE</th><th>TELEPHONE</th><th>DATE DE NAISSANCE</th><th>ACTIONS</th>
+    </tr>
+    <?php
+foreach($etudiants as $et){
+ ?>   
+    <tr>
+    <td><?php echo $et['matricule']; ?></td>
+    <td><?php echo $et['nom']; ?></td>
+    <td><?php echo $et['prenom']; ?></td>
+    <td><?php echo $et['sexe']; ?></td>
+    <td><?php echo $et['telephone']; ?></td>
+    <td><?php echo $et['date_de_naissance']; ?></td>
+    <td><a href="../../controllers/EtudiantCtrl.php?action=editForm&matricule=<?php echo $et['matricule']; ?>" >MODIFIER</a>--<a href="../../controllers/EtudiantCtrl.php?action=delete&matricule=<?php echo $et['matricule']; ?>"   onClick="return window.confirm('Etes-vous sûre de vouloir supprimer cet étudiant')">SUPPRIMER</a></td>
+    </tr>
+<?php } ?>
+   
+</table>
 
+<!--
+<input type="hidden" name="action" value="editForm" form="f1" />
+<input form="f1"  type="submit" value="MODIFIER" />
+<input type="hidden" name="matricule" value="UIN" form="f1" />
+-->
+
+<form action="../../controllers/EtudiantCtrl.php" method="GET" id="f1"></form>
 </body>
 </html>

@@ -14,7 +14,7 @@ class Classe
 
     public function add($id, $numero, $libelle, $nbreE)
     {
-        $requete = 'insert into etudiant (id, numero, libelle, nbreE) values (:id, :nm, :lb, :nbreE)';
+        $requete = 'insert into classe (id, numero, libelle, nbreE) values (:id, :nm, :lb, :nbreE)';
         $stat = $this->connexion->prepare($requete);
         $rs = $stat->execute([
             'id' => $id,
@@ -30,12 +30,13 @@ class Classe
     public function edit($id, $numero, $libelle, $nbreE)
     {
 
-        $requete='update etudiant set numero=:nm, libelle=:lb, nbreE=:nbreE where id=:id';
+        $requete='update classe set numero=:nm, libelle=:lb, nbreE=:nbreE where id=:id';
         $stmt=$this->connexion->prepare($requete);
         $result=$stmt->execute([
             'nm'=> $numero,
             'lb'=> $libelle,
             'nbreE'=>$nbreE,
+            'id'=> $id
         ]);
 
     }

@@ -43,17 +43,16 @@
         </tr>
         <tr>
             <td>EMAIL</td>
-            <td><input type="text" value="<?= $email['email'] ?>" name="email" required></td>
+            <td><input type="text" value="<?= $enseignant['email'] ?>" name="email" required></td>
         </tr>
         <tr>
             <td>ADDRESSE</td>
-            <td><input type="text" value="<?= $enseignant['ddn'] ?>" name="ddn" required></td>
+            <td><input type="text" value="<?= $enseignant['adresse'] ?>" name="ddn" required></td>
         </tr>
         <tr>
             <input type="hidden" name="action" value="modifier">
             <td colspan="2" style="text-align: center">  
 
-&nbsp; &nbsp; &nbsp;&nbsp;
 <input type='submit' style="background-color: green; color: white" value="MODIFIER"></td>
         </tr>
     </table>
